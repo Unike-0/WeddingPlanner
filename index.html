@@ -1,0 +1,703 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumière & Co. — Wedding Planning & Events</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --coral:#FF8A6B;
+    --amber:#F6A96B;
+    --peach:#FFD0B5;
+    --rose:#FFB6A3;
+    --blush:#FFE4DD;
+    --cream:#FFF7F0;
+    --wine:#9C3A2E;
+    --ink:#3D2218;
+  }
+  *{scroll-behavior:smooth;}
+  body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);}
+  h1,h2,h3,h4,.serif{font-family:'Cormorant Garamond',serif;}
+  .hero-bg{
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,208,181,0.6), transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,138,107,0.35), transparent 45%),
+      radial-gradient(circle at 60% 80%, rgba(255,180,163,0.5), transparent 55%),
+      linear-gradient(135deg, #FFE9DD 0%, #FFD0B5 50%, #FFB6A3 100%);
+  }
+  .text-gradient{
+    background:linear-gradient(120deg,#FF8A6B,#F6A96B,#FFB6A3);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg,#FF8A6B,#F6A96B);
+    box-shadow:0 10px 30px -10px rgba(255,138,107,0.6);
+    transition:all .35s ease;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(255,138,107,0.75);}
+  .card-hover{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease;}
+  .card-hover:hover{transform:translateY(-10px);box-shadow:0 30px 60px -25px rgba(255,138,107,0.45);}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .nav-link{position:relative;}
+  .nav-link::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--coral);transition:width .3s ease;}
+  .nav-link:hover::after{width:100%;}
+  .glass{
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.6);
+  }
+  .floaty{animation:floaty 6s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .blob{filter:blur(40px);opacity:.6;animation:blob 14s ease-in-out infinite;}
+  @keyframes blob{
+    0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;transform:translate(0,0) scale(1)}
+    50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%;transform:translate(20px,-20px) scale(1.05)}
+  }
+  .ornament{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--coral);}
+  .ornament::before,.ornament::after{content:'';height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--coral),transparent);}
+  .scroll-hint{animation:scrollHint 2s ease-in-out infinite;}
+  @keyframes scrollHint{0%{transform:translateY(0);opacity:1}50%{transform:translateY(8px);opacity:.4}100%{transform:translateY(0);opacity:1}}
+  .timeline-line{background:linear-gradient(180deg,#FF8A6B,#F6A96B,transparent);}
+  .gallery-item{overflow:hidden;border-radius:1rem;}
+  .gallery-item img{transition:transform .8s cubic-bezier(.2,.8,.2,1);}
+  .gallery-item:hover img{transform:scale(1.08);}
+  .quote-mark{font-family:'Cormorant Garamond',serif;font-size:8rem;line-height:0;color:var(--coral);opacity:.3;}
+  .input-style{
+    background:rgba(255,255,255,0.7);
+    border:1px solid rgba(255,138,107,0.3);
+    transition:all .3s ease;
+  }
+  .input-style:focus{outline:none;border-color:var(--coral);box-shadow:0 0 0 4px rgba(255,138,107,0.15);background:#fff;}
+  .pill{background:linear-gradient(120deg,#FFE4DD,#FFD0B5);color:#9C3A2E;}
+  .stat-num{font-variant-numeric:tabular-nums;}
+  .marquee-track{animation:marquee 30s linear infinite;}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .check-list li{position:relative;padding-left:32px;margin-bottom:10px;}
+  .check-list li::before{content:'\f005';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;left:0;top:2px;color:var(--coral);font-size:14px;}
+  .accordion-body{max-height:0;overflow:hidden;transition:max-height .5s ease,padding .4s ease;}
+  .accordion.open .accordion-body{max-height:300px;padding-top:12px;}
+  .accordion.open .acc-icon{transform:rotate(45deg);}
+  .acc-icon{transition:transform .3s ease;}
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- ===== NAV ===== -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-2">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#FF8A6B" stroke-width="1.5"/><path d="M14 24c2-4 4-6 6-6s4 2 6 6" stroke="#FF8A6B" stroke-width="1.5" fill="none"/><circle cx="20" cy="16" r="3" fill="#F6A96B"/></svg>
+      <span class="serif text-2xl font-semibold tracking-wide" style="color:var(--ink)">Lumière <span class="text-gradient">& Co.</span></span>
+    </a>
+    <ul class="hidden md:flex items-center gap-9 text-sm tracking-wide font-medium">
+      <li><a class="nav-link" href="#events">Events</a></li>
+      <li><a class="nav-link" href="#services">Services</a></li>
+      <li><a class="nav-link" href="#gallery">Gallery</a></li>
+      <li><a class="nav-link" href="#process">Process</a></li>
+      <li><a class="nav-link" href="#stories">Stories</a></li>
+      <li><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="hidden md:inline-block btn-primary text-white text-sm font-medium px-6 py-2.5 rounded-full">Book a Call</a>
+    <button id="menuBtn" class="md:hidden text-2xl" style="color:var(--ink)"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+  <div id="mobileMenu" class="md:hidden hidden glass mx-4 rounded-2xl p-6">
+    <ul class="flex flex-col gap-4 text-sm font-medium">
+      <li><a href="#events" class="nav-link">Events</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#process" class="nav-link">Process</a></li>
+      <li><a href="#stories" class="nav-link">Stories</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero-bg relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden">
+  <div class="blob absolute top-20 -left-20 w-96 h-96 rounded-full" style="background:#FFB6A3"></div>
+  <div class="blob absolute bottom-10 right-0 w-[28rem] h-[28rem] rounded-full" style="background:#FFD0B5;animation-delay:-4s"></div>
+
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+    <div class="reveal">
+      <div class="ornament mb-6 text-xs uppercase tracking-[0.3em] font-medium">Weddings · Elopements · Celebrations</div>
+      <h1 class="serif text-5xl md:text-7xl leading-[1.05] font-medium mb-6">
+        Where love<br>becomes a <span class="text-gradient italic">luminous</span><br>celebration.
+      </h1>
+      <p class="text-lg md:text-xl opacity-80 max-w-lg mb-8 font-light">
+        We design and orchestrate weddings that feel like an eternal golden hour — warm, intimate, and unforgettable.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="#events" class="btn-primary text-white px-8 py-3.5 rounded-full font-medium tracking-wide">Explore Events</a>
+        <a href="#contact" class="glass px-8 py-3.5 rounded-full font-medium tracking-wide hover:bg-white transition">Plan with Us →</a>
+      </div>
+      <div class="mt-12 flex items-center gap-8">
+        <div><div class="serif text-4xl font-semibold text-gradient stat-num" data-count="240">0</div><div class="text-xs uppercase tracking-widest opacity-70 mt-1">Weddings</div></div>
+        <div class="w-px h-10 bg-orange-300/50"></div>
+        <div><div class="serif text-4xl font-semibold text-gradient stat-num" data-count="14">0</div><div class="text-xs uppercase tracking-widest opacity-70 mt-1">Years</div></div>
+        <div class="w-px h-10 bg-orange-300/50"></div>
+        <div><div class="serif text-4xl font-semibold text-gradient stat-num" data-count="38">0</div><div class="text-xs uppercase tracking-widest opacity-70 mt-1">Awards</div></div>
+      </div>
+    </div>
+
+    <div class="relative reveal">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <div class="rounded-3xl overflow-hidden shadow-xl aspect-[3/4] floaty">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600" alt="couple" class="w-full h-full object-cover">
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-xl aspect-square">
+            <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600" alt="decor" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div class="space-y-4 pt-10">
+          <div class="rounded-3xl overflow-hidden shadow-xl aspect-square">
+            <img src="https://images.unsplash.com/photo-1511285560919-80b456fea0bc?w=600" alt="ceremony" class="w-full h-full object-cover">
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-xl aspect-[3/4] floaty" style="animation-delay:-2s">
+            <img src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=600" alt="bouquet" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+      <div class="glass absolute -bottom-6 -left-6 px-6 py-4 rounded-2xl shadow-xl hidden md:block">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full btn-primary flex items-center justify-center text-white"><i class="fa-solid fa-star"></i></div>
+          <div><div class="text-sm font-semibold">4.9 / 5.0</div><div class="text-xs opacity-70">Bridebook Awards</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-orange-700 scroll-hint">
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="bg-[#3D2218] text-orange-100 py-4 overflow-hidden">
+  <div class="flex whitespace-nowrap marquee-track">
+    <div class="flex items-center gap-12 px-6 text-sm tracking-[0.3em] uppercase font-light">
+      <span>Beach Ceremonies</span><span>✦</span><span>Vineyard Receptions</span><span>✦</span><span>Bohemian Elopements</span><span>✦</span><span>Black-Tie Galas</span><span>✦</span><span>Garden Soirées</span><span>✦</span><span>Destination Weddings</span><span>✦</span>
+    </div>
+    <div class="flex items-center gap-12 px-6 text-sm tracking-[0.3em] uppercase font-light">
+      <span>Beach Ceremonies</span><span>✦</span><span>Vineyard Receptions</span><span>✦</span><span>Bohemian Elopements</span><span>✦</span><span>Black-Tie Galas</span><span>✦</span><span>Garden Soirées</span><span>✦</span><span>Destination Weddings</span><span>✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EVENTS ===== -->
+<section id="events" class="py-24 px-6 relative">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <div class="ornament mb-4 text-xs uppercase tracking-[0.3em]">Our Signature Events</div>
+      <h2 class="serif text-4xl md:text-5xl font-medium mb-4">A celebration for every chapter</h2>
+      <p class="opacity-75">From intimate elopements to grand weekend affairs, each event is tailored with intention, warmth, and quiet elegance.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Event Card -->
+      <article class="card-hover bg-white rounded-3xl overflow-hidden shadow-md reveal">
+        <div class="relative h-60 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=700" class="w-full h-full object-cover" alt="">
+          <div class="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent"></div>
+          <span class="pill absolute top-4 left-4 text-xs font-medium px-3 py-1 rounded-full">Elopement</span>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-orange-600 font-medium mb-2">Tuscany · 24 guests</div>
+          <h3 class="serif text-2xl font-semibold mb-2">Sunlit Vineyard Vows</h3>
+          <p class="text-sm opacity-70 mb-4">A quiet ceremony beneath olive trees, with long tables, candlelight, and a slow sunset over the rolling hills.</p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-medium">From $14,500</div>
+            <a href="#contact" class="text-orange-600 text-sm font-medium hover:underline">View details →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-white rounded-3xl overflow-hidden shadow-md reveal">
+        <div class="relative h-60 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700" class="w-full h-full object-cover" alt="">
+          <div class="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent"></div>
+          <span class="pill absolute top-4 left-4 text-xs font-medium px-3 py-1 rounded-full">Black-Tie</span>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-orange-600 font-medium mb-2">Riviera · 180 guests</div>
+          <h3 class="serif text-2xl font-semibold mb-2">Champagne & Starlight</h3>
+          <p class="text-sm opacity-70 mb-4">An opulent evening of crystal, gold accents, and a string quartet performing beneath a midnight sky.</p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-medium">From $92,000</div>
+            <a href="#contact" class="text-orange-600 text-sm font-medium hover:underline">View details →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-white rounded-3xl overflow-hidden shadow-md reveal">
+        <div class="relative h-60 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=700" class="w-full h-full object-cover" alt="">
+          <div class="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent"></div>
+          <span class="pill absolute top-4 left-4 text-xs font-medium px-3 py-1 rounded-full">Bohemian</span>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-orange-600 font-medium mb-2">Santorini · 60 guests</div>
+          <h3 class="serif text-2xl font-semibold mb-2">Cliffs of Coral</h3>
+          <p class="text-sm opacity-70 mb-4">Sun-washed terraces, wildflowers, and a candlelit dinner overlooking the Aegean at golden hour.</p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-medium">From $34,500</div>
+            <a href="#contact" class="text-orange-600 text-sm font-medium hover:underline">View details →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-white rounded-3xl overflow-hidden shadow-md reveal">
+        <div class="relative h-60 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1537907511H5a3f5c2b4c6?w=700" class="w-full h-full object-cover" alt="" onerror="this.src='https://images.unsplash.com/photo-1464366400600-7168b8b9de94?w=700'">
+          <div class="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent"></div>
+          <span class="pill absolute top-4 left-4 text-xs font-medium px-3 py-1 rounded-full">Garden</span>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-orange-600 font-medium mb-2">Provence · 90 guests</div>
+          <h3 class="serif text-2xl font-semibold mb-2">Lavender & Linen</h3>
+          <p class="text-sm opacity-70 mb-4">A botanical garden ceremony followed by a rustic al-fresco dinner under twinkling fairy lights.</p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-medium">From $26,500</div>
+            <a href="#contact" class="text-orange-600 text-sm font-medium hover:underline">View details →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-white rounded-3xl overflow-hidden shadow-md reveal">
+        <div class="relative h-60 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=700" class="w-full h-full object-cover" alt="">
+          <div class="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent"></div>
+          <span class="pill absolute top-4 left-4 text-xs font-medium px-3 py-1 rounded-full">Beach</span>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-orange-600 font-medium mb-2">Tulum · 40 guests</div>
+          <h3 class="serif text-2xl font-semibold mb-2">Barefoot in the Sand</h3>
+          <p class="text-sm opacity-70 mb-4">A barefoot beach ceremony with macramé arches, tropical blooms, and a fire-lit reception by the sea.</p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-medium">From $19,500</div>
+            <a href="#contact" class="text-orange-600 text-sm font-medium hover:underline">View details →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-hover bg-white rounded-3xl overflow-hidden shadow-md reveal">
+        <div class="relative h-60 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700" class="w-full h-full object-cover" alt="">
+          <div class="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent"></div>
+          <span class="pill absolute top-4 left-4 text-xs font-medium px-3 py-1 rounded-full">Intimate</span>
+        </div>
+        <div class="p-6">
+          <div class="text-xs uppercase tracking-widest text-orange-600 font-medium mb-2">Paris · 16 guests</div>
+          <h3 class="serif text-2xl font-semibold mb-2">A Secret Garden Affair</h3>
+          <p class="text-sm opacity-70 mb-4">A hidden Parisian courtyard with a private chef, vintage glassware, and a string duo through dinner.</p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-medium">From $11,500</div>
+            <a href="#contact" class="text-orange-600 text-sm font-medium hover:underline">View details →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="py-24 px-6 relative" style="background:linear-gradient(180deg,#FFF7F0,#FFE4DD)">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div class="reveal">
+      <div class="ornament mb-4 text-xs uppercase tracking-[0.3em] justify-start" style="justify-content:flex-start">Services</div>
+      <h2 class="serif text-4xl md:text-5xl font-medium mb-6">Every detail, considered.</h2>
+      <p class="opacity-80 mb-8 max-w-lg">From the first spark of inspiration to the final farewell, our team handles every element so you can be fully present in the moment.</p>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="glass p-6 rounded-2xl card-hover">
+          <div class="w-12 h-12 rounded-xl btn-primary flex items-center justify-center text-white mb-4"><i class="fa-solid fa-feather"></i></div>
+          <h3 class="serif text-xl font-semibold mb-1">Concept & Design</h3>
+          <p class="text-sm opacity-70">Mood boards, color palettes, and a singular aesthetic vision tailored to your story.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl card-hover">
+          <div class="w-12 h-12 rounded-xl btn-primary flex items-center justify-center text-white mb-4"><i class="fa-solid fa-location-dot"></i></div>
+          <h3 class="serif text-xl font-semibold mb-1">Venue Curation</h3>
+          <p class="text-sm opacity-70">Hand-picked estates, villas, gardens, and remote landscapes around the world.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl card-hover">
+          <div class="w-12 h-12 rounded-xl btn-primary flex items-center justify-center text-white mb-4"><i class="fa-solid fa-utensils"></i></div>
+          <h3 class="serif text-xl font-semibold mb-1">Catering & Bar</h3>
+          <p class="text-sm opacity-70">Private chefs, bespoke menus, and signature cocktails crafted for your guests.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl card-hover">
+          <div class="w-12 h-12 rounded-xl btn-primary flex items-center justify-center text-white mb-4"><i class="fa-solid fa-music"></i></div>
+          <h3 class="serif text-xl font-semibold mb-1">Music & Atmosphere</h3>
+          <p class="text-sm opacity-70">String quartets, live bands, DJs, and ambient soundscapes for each moment.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl card-hover">
+          <div class="w-12 h-12 rounded-xl btn-primary flex items-center justify-center text-white mb-4"><i class="fa-solid fa-camera"></i></div>
+          <h3 class="serif text-xl font-semibold mb-1">Photo & Film</h3>
+          <p class="text-sm opacity-70">Editorial photography and cinematic films to relive every glance forever.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl card-hover">
+          <div class="w-12 h-12 rounded-xl btn-primary flex items-center justify-center text-white mb-4"><i class="fa-solid fa-spa"></i></div>
+          <h3 class="serif text-xl font-semibold mb-1">Florals & Styling</h3>
+          <p class="text-sm opacity-70">Sculptural florals, tablescapes, and table linen styling with a soft touch.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative reveal">
+      <div class="rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=900" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="glass absolute -bottom-8 -left-8 p-6 rounded-2xl shadow-xl max-w-xs hidden md:block">
+        <div class="flex items-start gap-3">
+          <i class="fa-solid fa-quote-left text-orange-500 text-2xl"></i>
+          <div>
+            <p class="text-sm font-medium italic">"They turned our vision into something more beautiful than we could have imagined."</p>
+            <div class="text-xs opacity-70 mt-2">— Elise & Theo, Provence 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <div class="ornament mb-4 text-xs uppercase tracking-[0.3em]">Gallery</div>
+      <h2 class="serif text-4xl md:text-5xl font-medium mb-4">Moments worth keeping</h2>
+      <p class="opacity-75">A glimpse into the warmth and detail of recent celebrations.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="gallery-item col-span-2 row-span-2 aspect-square reveal">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-square reveal">
+        <img src="https://images.unsplash.com/photo-1511285560919-80b456fea0bc?w=600" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-square reveal">
+        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-square reveal">
+        <img src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=600" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-square reveal">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item col-span-2 aspect-square reveal">
+        <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=900" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-square reveal">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-square reveal">
+        <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600" class="w-full h-full object-cover" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS TIMELINE ===== -->
+<section id="process" class="py-24 px-6 relative" style="background:linear-gradient(180deg,#FFE4DD,#FFF7F0)">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <div class="ornament mb-4 text-xs uppercase tracking-[0.3em]">Our Process</div>
+      <h2 class="serif text-4xl md:text-5xl font-medium mb-4">A calm, intentional journey</h2>
+      <p class="opacity-75">Four thoughtful phases that carry you from first hello to final dance.</p>
+    </div>
+
+    <div class="relative">
+      <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-px timeline-line -translate-x-1/2"></div>
+
+      <div class="space-y-12">
+        <!-- Step -->
+        <div class="relative grid md:grid-cols-2 gap-8 items-center reveal">
+          <div class="md:text-right md:pr-12 pl-16 md:pl-0">
+            <span class="pill text-xs font-medium px-3 py-1 rounded-full">Step 01</span>
+            <h3 class="serif text-2xl font-semibold mt-3 mb-2">Discovery Call</h3>
+            <p class="text-sm opacity-75">We meet over coffee or video to learn your story, vision, and what makes your heart flutter.</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 top-2 -translate-x-1/2 w-4 h-4 rounded-full btn-primary ring-4 ring-orange-100"></div>
+        </div>
+
+        <div class="relative grid md:grid-cols-2 gap-8 items-center reveal">
+          <div class="md:col-start-2 md:pl-12 pl-16">
+            <span class="pill text-xs font-medium px-3 py-1 rounded-full">Step 02</span>
+            <h3 class="serif text-2xl font-semibold mt-3 mb-2">Concept & Proposal</h3>
+            <p class="text-sm opacity-75">You receive a tailored design proposal with mood, palette, venue options, and a clear budget.</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 top-2 -translate-x-1/2 w-4 h-4 rounded-full btn-primary ring-4 ring-orange-100"></div>
+        </div>
+
+        <div class="relative grid md:grid-cols-2 gap-8 items-center reveal">
+          <div class="md:text-right md:pr-12 pl-16 md:pl-0">
+            <span class="pill text-xs font-medium px-3 py-1 rounded-full">Step 03</span>
+            <h3 class="serif text-2xl font-semibold mt-3 mb-2">Design & Coordination</h3>
+            <p class="text-sm opacity-75">We secure vendors, build the design, and orchestrate every detail with gentle weekly updates.</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 top-2 -translate-x-1/2 w-4 h-4 rounded-full btn-primary ring-4 ring-orange-100"></div>
+        </div>
+
+        <div class="relative grid md:grid-cols-2 gap-8 items-center reveal">
+          <div class="md:col-start-2 md:pl-12 pl-16">
+            <span class="pill text-xs font-medium px-3 py-1 rounded-full">Step 04</span>
+            <h3 class="serif text-2xl font-semibold mt-3 mb-2">The Celebration</h3>
+            <p class="text-sm opacity-75">You arrive and exhale. We direct every moment so you can simply savor the day.</p>
+          </div>
+          <div class="absolute left-6 md:left-1/2 top-2 -translate-x-1/2 w-4 h-4 rounded-full btn-primary ring-4 ring-orange-100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORIES / TESTIMONIALS ===== -->
+<section id="stories" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <div class="ornament mb-4 text-xs uppercase tracking-[0.3em]">Love Stories</div>
+      <h2 class="serif text-4xl md:text-5xl font-medium mb-4">Words from our couples</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-3xl p-8 shadow-md card-hover reveal relative">
+        <div class="quote-mark absolute -top-2 left-4">"</div>
+        <div class="flex gap-1 text-orange-500 mb-4 relative">
+          <i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i>
+        </div>
+        <p class="text-sm opacity-80 leading-relaxed mb-6 relative">The warmth of Lumière's team made our destination wedding feel effortless. Every detail echoed us — the colors, the music, the light.</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=200" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div><div class="font-semibold text-sm">Maya & Lucas</div><div class="text-xs opacity-60">Tulum · 2024</div></div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-md card-hover reveal relative">
+        <div class="quote-mark absolute -top-2 left-4">"</div>
+        <div class="flex gap-1 text-orange-500 mb-4 relative">
+          <i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i>
+        </div>
+        <p class="text-sm opacity-80 leading-relaxed mb-6 relative">We wanted a candlelit vineyard wedding and they delivered beyond our dreams. Guests still tell us it was the most beautiful day they've ever seen.</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div><div class="font-semibold text-sm">Sophie & Henri</div><div class="text-xs opacity-60">Tuscany · 2023</div></div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-md card-hover reveal relative">
+        <div class="quote-mark absolute -top-2 left-4">"</div>
+        <div class="flex gap-1 text-orange-500 mb-4 relative">
+          <i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i><i class="fa-solid fa-star text-xs"></i>
+        </div>
+        <p class="text-sm opacity-80 leading-relaxed mb-6 relative">From concept to the last dance, they understood us completely. Warm, organized, and genuinely kind people. We miss our weekly calls.</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc664a5a2?w=200" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div><div class="font-semibold text-sm">Aria & Daniel</div><div class="text-xs opacity-60">Provence · 2024</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="py-24 px-6" style="background:#FFF7F0">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <div class="ornament mb-4 text-xs uppercase tracking-[0.3em]">Good to Know</div>
+      <h2 class="serif text-4xl md:text-5xl font-medium mb-4">Frequently asked</h2>
+    </div>
+
+    <div class="space-y-4" id="faqList">
+      <div class="accordion bg-white rounded-2xl shadow-sm overflow-hidden reveal">
+        <button class="acc-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="serif text-lg font-semibold">How far in advance should we book?</span>
+          <span class="acc-icon text-orange-600"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="accordion-body px-5 pb-0"><p class="text-sm opacity-75 pb-4">We recommend securing your date 9–14 months ahead for peak season, and 4–6 months for off-peak. Dates are reserved on a first-come basis.</p></div>
+      </div>
+      <div class="accordion bg-white rounded-2xl shadow-sm overflow-hidden reveal">
+        <button class="acc-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="serif text-lg font-semibold">Do you plan destination weddings?</span>
+          <span class="acc-icon text-orange-600"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="accordion-body px-5 pb-0"><p class="text-sm opacity-75 pb-4">Yes — we specialize in destinations across Europe, the Mediterranean, and Latin America. We travel with you and bring our trusted network.</p></div>
+      </div>
+      <div class="accordion bg-white rounded-2xl shadow-sm overflow-hidden reveal">
+        <button class="acc-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="serif text-lg font-semibold">What's included in your packages?</span>
+          <span class="acc-icon text-orange-600"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="accordion-body px-5 pb-0"><p class="text-sm opacity-75 pb-4">Full planning, design, vendor coordination, on-site direction, and a dedicated lead planner. Floral, catering, and photography are curated bespoke to your budget.</p></div>
+      </div>
+      <div class="accordion bg-white rounded-2xl shadow-sm overflow-hidden reveal">
+        <button class="acc-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="serif text-lg font-semibold">Can you work with our cultural traditions?</span>
+          <span class="acc-icon text-orange-600"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="accordion-body px-5 pb-0"><p class="text-sm opacity-75 pb-4">Absolutely. Honoring heritage is one of our specialties — we love weaving rituals, music, and customs into the day with care and authenticity.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA / CONTACT ===== -->
+<section id="contact" class="py-24 px-6 relative overflow-hidden">
+  <div class="blob absolute -top-10 -right-10 w-80 h-80 rounded-full" style="background:#FF8A6B;opacity:.4"></div>
+  <div class="blob absolute bottom-0 left-0 w-72 h-72 rounded-full" style="background:#FFD0B5;opacity:.5;animation-delay:-3s"></div>
+
+  <div class="max-w-5xl mx-auto glass rounded-[2.5rem] p-8 md:p-14 relative z-10 reveal shadow-2xl">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <div class="ornament mb-4 text-xs uppercase tracking-[0.3em]" style="justify-content:flex-start">Let's begin</div>
+        <h2 class="serif text-4xl md:text-5xl font-medium mb-4 leading-tight">Tell us your <span class="text-gradient italic">love story</span>.</h2>
+        <p class="opacity-80 mb-6">Share a few details and we'll send back a personalized proposal within 48 hours.</p>
+        <ul class="check-list text-sm opacity-85 mb-8">
+          <li>Complimentary 45-minute discovery call</li>
+          <li>Bespoke mood board within one week</li>
+          <li>Transparent, line-item budget</li>
+        </ul>
+        <div class="space-y-2 text-sm">
+          <div class="flex items-center gap-3"><i class="fa-solid fa-envelope text-orange-600"></i> hello@lumiereandco.com</div>
+          <div class="flex items-center gap-3"><i class="fa-solid fa-phone text-orange-600"></i> +33 1 84 80 19 27</div>
+          <div class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-orange-600"></i> Studio 12, Rue de la Lumière, Paris</div>
+        </div>
+      </div>
+
+      <form class="space-y-4" id="contactForm">
+        <div class="grid grid-cols-2 gap-4">
+          <input type="text" placeholder="First name" class="input-style rounded-xl px-4 py-3 text-sm w-full" required>
+          <input type="text" placeholder="Partner's name" class="input-style rounded-xl px-4 py-3 text-sm w-full">
+        </div>
+        <input type="email" placeholder="Email address" class="input-style rounded-xl px-4 py-3 text-sm w-full" required>
+        <input type="text" placeholder="Dream location" class="input-style rounded-xl px-4 py-3 text-sm w-full">
+        <div class="grid grid-cols-2 gap-4">
+          <input type="date" class="input-style rounded-xl px-4 py-3 text-sm w-full">
+          <select class="input-style rounded-xl px-4 py-3 text-sm w-full">
+            <option>Guest count</option>
+            <option>Under 30</option>
+            <option>30–80</option>
+            <option>80–150</option>
+            <option>150+</option>
+          </select>
+        </div>
+        <textarea placeholder="Tell us about your vision..." rows="3" class="input-style rounded-xl px-4 py-3 text-sm w-full resize-none"></textarea>
+        <button type="submit" class="btn-primary text-white w-full py-3.5 rounded-xl font-medium tracking-wide">Send Your Story</button>
+        <p id="formMsg" class="text-center text-sm text-orange-700 font-medium hidden">Thank you — we'll be in touch within 48 hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#3D2218] text-orange-100 pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10 mb-12">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-2 mb-4">
+        <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#FF8A6B" stroke-width="1.5"/><path d="M14 24c2-4 4-6 6-6s4 2 6 6" stroke="#FF8A6B" stroke-width="1.5" fill="none"/><circle cx="20" cy="16" r="3" fill="#F6A96B"/></svg>
+        <span class="serif text-2xl font-semibold">Lumière & Co.</span>
+      </div>
+      <p class="opacity-70 text-sm max-w-md mb-6">A boutique wedding planning studio crafting warm, intimate, and unforgettable celebrations across the world.</p>
+      <div class="flex gap-3">
+        <a href="#" class="w-10 h-10 rounded-full bg-orange-900/40 hover:bg-orange-700 transition flex items-center justify-center"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="w-10 h-10 rounded-full bg-orange-900/40 hover:bg-orange-700 transition flex items-center justify-center"><i class="fa-brands fa-pinterest"></i></a>
+        <a href="#" class="w-10 h-10 rounded-full bg-orange-900/40 hover:bg-orange-700 transition flex items-center justify-center"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="w-10 h-10 rounded-full bg-orange-900/40 hover:bg-orange-700 transition flex items-center justify-center"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4 class="serif text-lg font-semibold mb-4">Explore</h4>
+      <ul class="space-y-2 text-sm opacity-75">
+        <li><a href="#events" class="hover:text-orange-300">Events</a></li>
+        <li><a href="#services" class="hover:text-orange-300">Services</a></li>
+        <li><a href="#gallery" class="hover:text-orange-300">Gallery</a></li>
+        <li><a href="#process" class="hover:text-orange-300">Process</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="serif text-lg font-semibold mb-4">Studio</h4>
+      <ul class="space-y-2 text-sm opacity-75">
+        <li><a href="#contact" class="hover:text-orange-300">Contact</a></li>
+        <li><a href="#" class="hover:text-orange-300">Journal</a></li>
+        <li><a href="#" class="hover:text-orange-300">Press</a></li>
+        <li><a href="#" class="hover:text-orange-300">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto pt-6 border-t border-orange-900/40 flex flex-col md:flex-row justify-between gap-3 text-xs opacity-60">
+    <div>© 2025 Lumière & Co. — Designed with warmth in Paris.</div>
+    <div class="flex gap-4"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('bg-white/80','backdrop-blur-md','shadow-sm');
+      nav.classList.remove('text-white');
+    } else {
+      nav.classList.remove('bg-white/80','backdrop-blur-md','shadow-sm');
+    }
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Counter animation
+  const counters = document.querySelectorAll('.stat-num');
+  const cObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = +el.dataset.count;
+        let cur = 0;
+        const step = Math.max(1, Math.floor(target / 60));
+        const t = setInterval(() => {
+          cur += step;
+          if (cur >= target) { cur = target; clearInterval(t); }
+          el.textContent = cur + (target >= 100 ? '+' : '');
+        }, 24);
+        cObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => cObserver.observe(c));
+
+  // FAQ accordion
+  document.querySelectorAll('.accordion').forEach(acc => {
+    acc.querySelector('.acc-trigger').addEventListener('click', () => {
+      const open = acc.classList.contains('open');
+      document.querySelectorAll('.accordion').forEach(a => a.classList.remove('open'));
+      if (!open) acc.classList.add('open');
+    });
+  });
+
+  // Form submit
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.querySelectorAll('input,textarea,select,button').forEach(el => el.setAttribute('disabled',''));
+    formMsg.classList.remove('hidden');
+    form.reset();
+    setTimeout(() => { form.querySelectorAll('input,textarea,select,button').forEach(el => el.removeAttribute('disabled')); }, 2500);
+  });
+</script>
+</body>
+</html>
